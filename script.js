@@ -1,25 +1,21 @@
-async function sendMessage() {
-    const botToken = document.getElementById('botToken').value;
-    const channelId = document.getElementById('channelId').value;
-    const message = document.getElementById('message').value;
-
-    const url = `https://discord.com/api/v9/channels/${channelId}/messages`;
-    const data = {
-        content: message
-    };
-
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bot ${botToken}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-
-    if (response.ok) {
-        alert('Message sent successfully!');
-    } else {
-        alert('Failed to send message.');
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Bot Message Sender</title>
+</head>
+<body>
+    <h1>Send a Message via Discord Bot</h1>
+    <form id="messageForm">
+        <label for="botToken">Bot Token:</label>
+        <input type="text" id="botToken" name="botToken"><br><br>
+        <label for="channelId">Channel ID:</label>
+        <input type="text" id="channelId" name="channelId"><br><br>
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message"><br><br>
+        <button type="button" onclick="sendMessage()">Send</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
